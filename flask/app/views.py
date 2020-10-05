@@ -17,10 +17,13 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
 
+class MyModelView(ModelView):
+    pass
+
 # Admin routes
 
 admin.init_app(app)
-admin.add_view(ModelView(User, db.session))
+admin.add_view(MyModelView(User, db.session))
 
 # User routes
 
