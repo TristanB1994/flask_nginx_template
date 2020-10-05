@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+        flask:
+                build: ./flask
+                container_name: flask
+                restart: always
+                tty: true
+                environment:
+                        - APP_NAME=MyFlaskApp
+                working_dir: /app
+                expose:
+                        - 5000
+                volumes:
+                        - ./flask:/app
+                networks:
+                        - app-network
+
+        nginx:
+                build: ./nginx
+                container_name: nginx
+                restart: always
+                depends_on:
+                        - flask
+                ports:
+                        - "80:80"
+                networks:
+                        - app-network
+        
+networks:
+        app-network:
+                driver: bridge
