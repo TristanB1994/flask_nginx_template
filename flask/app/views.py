@@ -35,7 +35,7 @@ class MyAdminIndexView(AdminIndexView):
 
 # Admin routes
 
-admin.init_app(app)
+admin.init_app(app, index_view=MyAdminIndexView())
 admin.add_view(MyModelView(User, db.session))
 
 # User routes
