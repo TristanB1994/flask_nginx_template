@@ -10,7 +10,7 @@ In the terminal simply type: \
 Now we're going to build the containers, this may require you prepend the below command with 'sudo': \
 ~/docker-compose build 
 
-And finally run the comannd:
+And finally run the comannd: \
 ~/docker-compose up -d
 
 Now, in your browser you can navigate to 'localhost' and should see the project running!
