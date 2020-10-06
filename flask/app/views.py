@@ -9,7 +9,7 @@ from flask_login import UserMixin, LoginManager, current_user, login_user, logou
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
 
-app.config['SECRET_KEY'] = 'mysecret'
+app.config['SECRET_KEY'] = 'mysecret' 
 
 db = SQLAlchemy(app)
 login = LoginManager(app)
@@ -20,7 +20,7 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20))
+    name = db.Column(db.String(20), unique=True)
 
 class MyModelView(ModelView):
     def is_accessible(self):
@@ -50,9 +50,9 @@ def home():
 def login():
     user = User.query.get(1)
     login_user(user)
-    return 'Logged in'
+    return redirect(url_for('admin.index'))
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return "logged out!"
+    return redirect(url_for('home'))

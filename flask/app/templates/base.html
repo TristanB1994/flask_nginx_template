@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+        
+        <!-- Font File -->
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <section class="fill">
+            
+                <!-- Include navigation panel here -->
+
+            
+                {% block content %}{% endblock %}
+
+
+        </section>
+        <!-- Include footer panel here -->
+        <!-- Scripts -->
+
+        <!-- JS Files -->
+        <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+    </body>
+</html>
